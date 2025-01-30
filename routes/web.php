@@ -12,12 +12,19 @@ Router::get('/', [HomeController::class, 'home']);
 Router::get('/about', [HomeController::class, 'about']);
 Router::get('/login', [HomeController::class, 'login']);
 Router::get('/register', [HomeController::class, 'register']);
+Router::get('/product-card', [HomeController::class, 'product_card']);
+Router::get('/contacts', [HomeController::class, 'contacts']);
+Router::get('/news', [HomeController::class, 'news']);
+Router::get('/teachers', [HomeController::class, 'teachers']);
 
-Router::get('/dashboard', [UserController::class, 'home']);
-Router::get('/dashboard/quizzes', [UserController::class, 'quizzes']);
-Router::get('/dashboard/create_quiz', [UserController::class, 'create_quiz']);
-Router::get('/dashboard/statistic', [UserController::class, 'statistic']);
-Router::get('/quiz/take_quiz', [UserController::class, 'take_quiz']);
+
+Router::get('/dashboard', [UserController::class, 'course']);
+Router::get('/dashboard/payments', [UserController::class, 'payments']);
+Router::get('/dashboard/teachers', [UserController::class, 'teachers']);
+Router::get('/dashboard/videos', [UserController::class, 'videos']);
+Router::get('/dashboard/wallet', [UserController::class, 'wallet']);
+Router::get('/dashboard/purchases', [UserController::class, 'purchases']);
+Router::get('/dashboard/assignments', [UserController::class, 'assignments']);
 
 
 Router::get('/take_quiz/{id}', [QuizController::class, 'take_quiz']);

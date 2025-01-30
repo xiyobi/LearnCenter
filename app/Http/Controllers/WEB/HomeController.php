@@ -23,9 +23,25 @@ class HomeController
     {
         view("auth/register");
     }
-    public function take_quiz(string $uniqueValue): void
-        {
-            view("quiz/take_quiz");
-        }
+    public function product_card(): void
+    {
+        view("product-card");
+    }
+   public function contacts(): void
+    {
+        view("contacts");
+    }
+   public function news(): void
+    {
+        view("news");
+    }
+    public function teachers(): void
+    {
+        view("teachers");
+    }
+    public function teams(): void
+    {
+        view("teams");
+    }
 
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasApiTokens;
+use PDO;
 use Random\RandomException;
 
 class  User extends DB
@@ -14,7 +15,7 @@ class  User extends DB
      */
     public  function create(string $full_name, string $phone_number, string $email, string $password): true
     {
-        $query = "INSERT INTO users (full_name, phone_number, email, password, wallet, status, teacher, updated_at, created_at) VALUES (:full_name, :email, :password, :phone_number, :wallet, :status, :teacher, NOW(), NOW())";
+        $query = "INSERT INTO users (full_name, phone_number, email, password, wallet, status, teacher, updated_at, created_at) VALUES (:full_name, :phone_number, :email, :password, :wallet, :status, :teacher, NOW(), NOW())";
         $this->conn
             ->prepare($query)
             ->execute(
@@ -33,8 +34,10 @@ class  User extends DB
         $stmt->execute(
             [':email' => $email]
         );
+
         $user = $stmt->fetch();
         if ($user && password_verify($password, $user->password)) {
+
             $this->createApiToken($user->id);
             return true;
         }
@@ -46,7 +49,7 @@ class  User extends DB
  
     public function getUserById(int $id): mixed
     {
-        $query = "SELECT id, full_name, email, updated_at, created_at FROM users WHERE id = :id";
+        $query = "SELECT id, full_name, email, wallet, teacher, updated_at, created_at FROM users WHERE id = :id";
         $stmt = $this->conn
             ->prepare($query);
         $stmt->execute(

@@ -1,6 +1,6 @@
 <aside class="bg-white w-64 min-h-screen flex flex-col shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-150 ease-in fixed md:static z-30" id="sidebar">
     <div class="p-4 border-b flex items-center justify-between">
-        <h2 class="text-2xl font-bold text-gray-800">Quiz App</h2>
+        <h2 class="text-2xl font-bold text-gray-800">My Teach</h2>
         <div>
             <button class="md:hidden text-gray-600" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
                 <i class="fas fa-close text-xl"></i>
@@ -12,27 +12,40 @@
 <script>
     let sideBarItem = [
         {
-            'name': 'Dashboard',
+            'name': 'My Courses',
             'uri': '/dashboard',
             'icon': 'fas fa-home mr-2'
         },
         {
-            'name': 'My Quizzes',
-            'uri': '/dashboard/quizzes',
+            'name': 'My Videos',
+            'uri': '/dashboard/videos',
             'icon': 'fas fa-book mr-2'
         },
         {
-            'name': 'Create Quiz',
-            'uri': '/dashboard/create_quiz',
+            'name': 'My Teacher',
+            'uri': '/dashboard/teachers',
             'icon': 'fas fa-plus mr-2'
 
         },
         {
-            'name': 'Statistics',
-            'uri': '/dashboard/statistic',
+            'name': 'Wallet',
+            'uri': '/dashboard/wallet',
             'icon': 'fas fa-chart-bar mr-2'
 
+        },
+        {
+            'name': 'My Purchases',
+            'uri': '/dashboard/teachers',
+            'icon': 'fas fa-plus mr-2'
+
+        },
+        {
+            'name': 'Assignment',
+            'uri': '/dashboard/assignments',
+            'icon': 'fas fa-inbox mr-2'
+
         }
+
 
     ];
     let sideBar = document.getElementById('sideBar');

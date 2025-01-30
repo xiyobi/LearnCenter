@@ -27,15 +27,11 @@
             <!-- Quick Actions -->
             <div class="mb-8">
                 <div class="flex flex-wrap gap-4">
-                    <a href="/create_quiz" class="flex-1 min-w-[200px] bg-blue-600 text-white p-4 rounded-lg shadow hover:bg-blue-700 transition">
-                        <i class="fas fa-plus mb-2 text-2xl"></i>
-                        <h3 class="font-semibold">Create New Quiz</h3>
-                        <p class="text-sm opacity-90">Start creating a new quiz</p>
-                    </a>
-                    <a href="/statistic" class="flex-1 min-w-[200px] bg-green-600 text-white p-4 rounded-lg shadow hover:bg-green-700 transition">
-                        <i class="fas fa-chart-line mb-2 text-2xl"></i>
-                        <h3 class="font-semibold">View Statistics</h3>
-                        <p class="text-sm opacity-90">Check your progress</p>
+                    <a class="flex-1 min-w-[200px] bg-blue-600 text-white p-4 rounded-lg shadow hover:bg-blue-700 transition">
+                        <i class="fas fa-book mb-2 text-2xl"></i>
+                        <h3 class="font-semibold">My Teach</h3>
+                        <h1 class="text-sm opacity-90">Start creating a course</h1>
+                        <h1 class="text-gray-900 font-medium" id="createdAt"></h1>
                     </a>
                 </div>
             </div>
@@ -44,71 +40,61 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white p-4 rounded-lg shadow">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Total Quizzes</h3>
+                        <h3 class="text-gray-500">Wallet</h3>
                         <i class="fas fa-book text-blue-500"></i>
                     </div>
-                    <p class="text-2xl font-bold mt-2">24</p>
-                    <p class="text-sm text-green-500 mt-2">+3 this week</p>
+                    <p class="text-2xl font-bold mt-2">UZS</p>
+                    <p class="text-sm text-green-500 mt-2" id="wallet">Sum</p>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Completed</h3>
+                        <h3 class="text-gray-500">Teacher has</h3>
                         <i class="fas fa-check-circle text-green-500"></i>
                     </div>
-                    <p class="text-2xl font-bold mt-2">18</p>
-                    <p class="text-sm text-green-500 mt-2">75% completion rate</p>
+                    <p class="text-2xl font-bold mt-2">Fan nomi</p>
+                    <p class="text-sm text-green-500 mt-2" id="teacher">teacher</p>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Average Score</h3>
+                        <h3 class="text-gray-500">Do homework</h3>
                         <i class="fas fa-star text-yellow-500"></i>
                     </div>
-                    <p class="text-2xl font-bold mt-2">85%</p>
-                    <p class="text-sm text-green-500 mt-2">+2% from last month</p>
+                    <p class="text-2xl font-bold mt-2">Fan nomi</p>
+                    <p class="text-sm text-green-500 mt-2">0</p>
                 </div>
                 <div class="bg-white p-4 rounded-lg shadow">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-gray-500">Time Spent</h3>
+                        <h3 class="text-gray-500">Update Time</h3>
                         <i class="fas fa-clock text-purple-500"></i>
                     </div>
-                    <p class="text-2xl font-bold mt-2">12h</p>
-                    <p class="text-sm text-green-500 mt-2">This week</p>
+                    <p class="text-2xl font-bold mt-2">Yangilnish</p>
+                    <p class="text-sm text-green-500 mt-2" id="updateAt">updateAt</p>
                 </div>
             </div>
 
             <!-- Recent Activity -->
             <div class="bg-white rounded-lg shadow p-4 mb-8">
-                <h2 class="text-xl font-semibold mb-4">Recent Activity</h2>
+                <h2 class="text-xl font-semibold mb-4">Kurs kitoblari</h2>
                 <div class="space-y-4">
                     <div class="flex items-center gap-4 pb-4 border-b">
                         <div class="bg-blue-100 p-2 rounded-lg">
                             <i class="fas fa-plus text-blue-500"></i>
                         </div>
                         <div class="flex-1">
-                            <h4 class="font-medium">Created new quiz</h4>
-                            <p class="text-sm text-gray-500">Mathematics Quiz - Advanced Level</p>
+                            <h4 class="font-medium">Kurs kitob</h4>
+                            <p class="text-sm text-gray-500">Mathematics book- Advanced Level</p>
                         </div>
-                        <span class="text-sm text-gray-500">2h ago</span>
+                        <span class="text-sm text-gray-500">yuklangan vaqti</span>
                     </div>
                     <div class="flex items-center gap-4 pb-4 border-b">
                         <div class="bg-green-100 p-2 rounded-lg">
                             <i class="fas fa-check text-green-500"></i>
                         </div>
                         <div class="flex-1">
-                            w<h4 class="font-medium">Completed quiz</h4>
-                            <p class="text-sm text-gray-500">Science Quiz - Score: 92%</p>
+                            <h4 class="font-medium">Qo'shimcha kitob</h4>
+                            <p class="text-sm text-gray-500">kitob nomi</p>
                         </div>
-                        <span class="text-sm text-gray-500">1d ago</span>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <div class="bg-purple-100 p-2 rounded-lg">
-                            <i class="fas fa-trophy text-purple-500"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-medium">Achievement unlocked</h4>
-                            <p class="text-sm text-gray-500">Perfect Score Streak - 3 quizzes</p>
-                        </div>
-                        <span class="text-sm text-gray-500">2d ago</span>
+                        <span class="text-sm text-gray-500">yuklangan vaqti</span>
                     </div>
                 </div>
             </div>
