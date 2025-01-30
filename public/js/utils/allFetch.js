@@ -19,7 +19,7 @@ function apiFetch(uri,options={}){
                 if(window.location.pathname==='/login' || window.location.pathname==='/register'){
                 }
                 else {
-                    // localStorage.removeItem('token');
+                    localStorage.removeItem('token');
                     window.location.href='/login';
                 }
             }

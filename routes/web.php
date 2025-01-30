@@ -2,7 +2,8 @@
 
 
 use App\Http\Controllers\WEB\HomeController;
-use App\Http\Controllers\WEB\QuizController;
+use App\Http\Controllers\WEB\AdminController;
+use App\Http\Controllers\WEB\TeacherController;
 use App\Http\Controllers\WEB\UserController;
 
 use Src\Router;
@@ -17,7 +18,7 @@ Router::get('/contacts', [HomeController::class, 'contacts']);
 Router::get('/news', [HomeController::class, 'news']);
 Router::get('/teachers', [HomeController::class, 'teachers']);
 
-
+//Dashboard
 Router::get('/dashboard', [UserController::class, 'course']);
 Router::get('/dashboard/payments', [UserController::class, 'payments']);
 Router::get('/dashboard/teachers', [UserController::class, 'teachers']);
@@ -27,7 +28,20 @@ Router::get('/dashboard/purchases', [UserController::class, 'purchases']);
 Router::get('/dashboard/assignments', [UserController::class, 'assignments']);
 
 
-Router::get('/take_quiz/{id}', [QuizController::class, 'take_quiz']);
+//admin
+Router::get('/admin/dashboard/add_student', [AdminController::class, 'addStudent']);
+Router::get('/admin/dashboard/students', [AdminController::class, 'students']);
+Router::get('/admin/dashboard/teachers', [AdminController::class, 'teachers']);
+Router::get('/admin/dashboard/videos', [AdminController::class, 'videos']);
+
+//teacher
+Router::get('/teacher/dashboard/assignments', [TeacherController::class, 'assignments']);
+Router::get('/teacher/dashboard/groups', [TeacherController::class, 'groups']);
+Router::get('/teacher/dashboard/homework', [TeacherController::class, 'homework']);
+Router::get('/teacher/dashboard/videos', [TeacherController::class, 'videos']);
+Router::get('/teacher/dashboard/students', [TeacherController::class, 'students']);
+
+
 
 Router::get('/dashboard/quizzes/{id}/update', [UserController::class, 'update']);
 

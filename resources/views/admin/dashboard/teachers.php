@@ -1,9 +1,9 @@
-<?php require '../resources/views/components/header.php'; ?>
+<?php require '../resources/views/admin-components/header.php'; ?>
 <script src=" /js/dashboard/getUserInfo.js"></script>
 <body class="bg-gray-100">
 <div class="min-h-screen flex">
     <!-- Sidebar -->
-    <?php require '../resources/views/components/sidebar.php'; ?>
+    <?php require '../resources/views/admin-components/sidebar.php'; ?>
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
         <!-- Top Navigation -->
@@ -102,4 +102,4 @@
     </div>
 </div>
 
-<?php require '../resources/components/footer.php'; ?>
+<?php require '../resources/admin-components/footer.php'; ?>

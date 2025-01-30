@@ -81,21 +81,21 @@ class Router
 
     }
 
-    public static function put(string $route, callable|array $callback, ?string $middleware = null): void
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'PUT' || ($_SERVER['REQUEST_METHOD'] === 'POST')) {
-        if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'PUT') || $_SERVER['REQUEST_METHOD'] === 'PUT') {
-            self::runCallback($route, $callback,$middleware);
-        }
-        }
-    }
+//    public static function put(string $route, callable|array $callback, ?string $middleware = null): void
+//    {
+//        if ($_SERVER['REQUEST_METHOD'] === 'PUT' || ($_SERVER['REQUEST_METHOD'] === 'POST')) {
+//        if (($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_method']) && $_POST['_method'] === 'PUT') || $_SERVER['REQUEST_METHOD'] === 'PUT') {
+//            self::runCallback($route, $callback,$middleware);
+//        }
+//        }
+//    }
 
-    public static function delete(string $route, callable|array $callback, ?string $middleware): void
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-            self::runCallback($route, $callback,$middleware);
-        }
-    }
+//    public static function delete(string $route, callable|array $callback, ?string $middleware): void
+//    {
+//        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+//            self::runCallback($route, $callback,$middleware);
+//        }
+//    }
 
     public static function isApiCall(): bool
     {

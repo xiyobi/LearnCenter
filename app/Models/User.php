@@ -49,7 +49,7 @@ class  User extends DB
  
     public function getUserById(int $id): mixed
     {
-        $query = "SELECT id, full_name, email, wallet, teacher, updated_at, created_at FROM users WHERE id = :id";
+        $query = "SELECT id, full_name, wallet, teacher,updated_at, created_at FROM users WHERE id = :id";
         $stmt = $this->conn
             ->prepare($query);
         $stmt->execute(

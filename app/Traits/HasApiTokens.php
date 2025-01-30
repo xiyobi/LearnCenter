@@ -19,7 +19,7 @@ trait HasApiTokens
 
         $this->api_token=bin2hex(random_bytes(40));
 
-        $this->duration = date('Y-m-d H:i:s', strtotime('+' . $_ENV['API_TOKEN_EXPIRATION_DAYS'] . ' days', time()));
+        $this->duration = date('Y-m-d H:i:s', strtotime('+' . $_ENV['API_TOKEN_EXPIRATION_DAYS'] . 'month', time()));
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
             ':userId' => $userId,
