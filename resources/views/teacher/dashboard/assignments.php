@@ -3,7 +3,7 @@
 <body class="bg-gray-100">
 <div class="min-h-screen flex">
     <!-- Sidebar -->
-    <?php require '../resources/views/components/sidebar.php'; ?>
+    <?php require '../resources/views/teacher-components/sidebar.php'; ?>
     <!-- Main Content -->
     <div class="flex-1 flex flex-col">
         <!-- Top Navigation -->
@@ -52,4 +52,4 @@
             </div>
         </div>
     </div>
-
+<?php require '../resources/views/teacher-components/footer.php'; ?>

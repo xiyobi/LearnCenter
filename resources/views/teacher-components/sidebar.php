@@ -12,25 +12,25 @@
 <script>
     let sideBarItem = [
         {
-            'name': 'StudentS',
-            'uri': '/admin/dashboard/students',
+            'name': 'Groups',
+            'uri': '/admin/dashboard/groups',
             'icon': 'fas fa-users mr-2'
+        },
+        {
+            'name': 'Assignments',
+            'uri': '/admin/dashboard/assignments',
+            'icon': 'fas fa-book mr-2'
+        },
+        {
+            'name': 'Students',
+            'uri': '/admin/dashboard/students',
+            'icon': 'fas fa-user mr-2'
+
         },
         {
             'name': 'Videos',
             'uri': '/admin/dashboard/videos',
             'icon': 'fas fa-video mr-2'
-        },
-        {
-            'name': 'Teachers',
-            'uri': '/admin/dashboard/teachers',
-            'icon': 'fas fa-user mr-2'
-
-        },
-        {
-            'name': 'Student Add',
-            'uri': '/admin/dashboard/add_student',
-            'icon': 'fas fa-plus mr-2'
         },
 
 

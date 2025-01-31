@@ -19,13 +19,13 @@ Router::get('/news', [HomeController::class, 'news']);
 Router::get('/teachers', [HomeController::class, 'teachers']);
 
 //Dashboard
-Router::get('/dashboard', [UserController::class, 'course']);
-Router::get('/dashboard/payments', [UserController::class, 'payments']);
-Router::get('/dashboard/teachers', [UserController::class, 'teachers']);
-Router::get('/dashboard/videos', [UserController::class, 'videos']);
-Router::get('/dashboard/wallet', [UserController::class, 'wallet']);
-Router::get('/dashboard/purchases', [UserController::class, 'purchases']);
-Router::get('/dashboard/assignments', [UserController::class, 'assignments']);
+Router::get('/user/dashboard', [UserController::class, 'course']);
+Router::get('/user/dashboard/payments', [UserController::class, 'payments']);
+Router::get('/user/dashboard/teachers', [UserController::class, 'teachers']);
+Router::get('/user/dashboard/videos', [UserController::class, 'videos']);
+Router::get('/user/dashboard/wallet', [UserController::class, 'wallet']);
+Router::get('/user/dashboard/purchases', [UserController::class, 'purchases']);
+Router::get('/user/dashboard/assignments', [UserController::class, 'assignments']);
 
 
 //admin

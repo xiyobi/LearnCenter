@@ -5,7 +5,7 @@
 <div class="bg-gray-100">
 <div class="flex min-h-screen">
     <!-- Sidebar -->
-    <?php include '../resources/views/components/sidebar.php'; ?>
+    <?php include '../resources/views/teacher-components/sidebar.php'; ?>
 
     <!-- Main Content -->
     <div class="flex-1">
@@ -150,4 +150,4 @@
     }
 
 </script>
-<?php require '../resources/views/components/footer.php'; ?>
+<?php require '../resources/views/teacher-components/footer.php'; ?>

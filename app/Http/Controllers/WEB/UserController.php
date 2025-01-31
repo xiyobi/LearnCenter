@@ -6,31 +6,31 @@ class UserController
 {
     public function course():void
     {
-        view('dashboard/course');
+        view('/user/dashboard/course');
     }
     public function payments():void
     {
-        view('dashboard/payments');
+        view('/user/dashboard/payments');
     }
     public function teachers():void
     {
-        view('dashboard/teachers');
+        view('user/dashboard/teachers');
     }
     public function videos():void
     {
-        view('dashboard/videos');
+        view('user/dashboard/videos');
     }
     public function wallet():void
     {
-        view('dashboard/wallet');
+        view('user/dashboard/wallet');
     }
     public function purchases():void
     {
-        view('dashboard/purchases');
+        view('user/dashboard/purchases');
     }
     public function assignments():void
     {
-        view('dashboard/assignments');
+        view('user/dashboard/assignments');
     }
 
 

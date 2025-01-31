@@ -14,20 +14,8 @@ class AdminController
     }
     public function students():void
     {
-        view('admin/dashboard/student');
-    }public function wallet():void
-    {
-        view('dashboard/wallet');
+        view('admin/dashboard/students');
     }
-    public function purchases():void
-    {
-        view('dashboard/purchases');
-    }
-    public function assignments():void
-    {
-        view('dashboard/assignments');
-    }
-
     public function teachers():void
     {
         view('admin/dashboard/teachers');
