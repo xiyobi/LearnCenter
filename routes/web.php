@@ -18,29 +18,34 @@ Router::get('/contacts', [HomeController::class, 'contacts']);
 Router::get('/news', [HomeController::class, 'news']);
 Router::get('/teachers', [HomeController::class, 'teachers']);
 
-//Dashboard
-Router::get('/user/dashboard', [UserController::class, 'course']);
-Router::get('/user/dashboard/payments', [UserController::class, 'payments']);
+//admin
+Router::get('/admin/dashboard/courses', [AdminController::class, 'courses']);
+Router::get('/admin/dashboard/videos', [AdminController::class, 'videos']);
+Router::get('/admin/dashboard/students', [AdminController::class, 'students']);
+Router::get('/admin/dashboard/settings', [AdminController::class, 'settings']);
+Router::get('/admin/dashboard/logout', [AdminController::class, 'logout']);
+
+
+//Users
+Router::get('/user/dashboard/course', [UserController::class, 'course']);
 Router::get('/user/dashboard/teachers', [UserController::class, 'teachers']);
 Router::get('/user/dashboard/videos', [UserController::class, 'videos']);
-Router::get('/user/dashboard/wallet', [UserController::class, 'wallet']);
 Router::get('/user/dashboard/purchases', [UserController::class, 'purchases']);
 Router::get('/user/dashboard/assignments', [UserController::class, 'assignments']);
+Router::get('/user/dashboard/homework', [UserController::class, 'homework']);
+Router::get('/user/dashboard/logout', [UserController::class, 'logout']);
 
 
-//admin
-Router::get('/admin/dashboard/add_student', [AdminController::class, 'addStudent']);
-Router::get('/admin/dashboard/students', [AdminController::class, 'students']);
-Router::get('/admin/dashboard/teachers', [AdminController::class, 'teachers']);
-Router::get('/admin/dashboard/videos', [AdminController::class, 'videos']);
+
 
 //teacher
-Router::get('/teacher/dashboard/assignments', [TeacherController::class, 'assignments']);
 Router::get('/teacher/dashboard/groups', [TeacherController::class, 'groups']);
+Router::get('/teacher/dashboard/assignments', [TeacherController::class, 'assignments']);
 Router::get('/teacher/dashboard/homework', [TeacherController::class, 'homework']);
 Router::get('/teacher/dashboard/videos', [TeacherController::class, 'videos']);
 Router::get('/teacher/dashboard/students', [TeacherController::class, 'students']);
-
+Router::get('/teacher/dashboard/add_videos', [TeacherController::class, 'add_videos']);
+Router::get('/teacher/dashboard/logout', [TeacherController::class, 'logout']);
 
 
 Router::get('/dashboard/quizzes/{id}/update', [UserController::class, 'update']);
