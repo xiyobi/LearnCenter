@@ -3,41 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O‘quvchilar Ro‘yxati</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Vazifa Yuklash</title>
 </head>
-<body class="bg-gray-100 p-6">
-<div class="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg">
-    <h2 class="text-2xl font-bold mb-4">📌 Vazifa Yuklash</h2>
-
-    <!-- O'qituvchi vazifa yuklaydi -->
-    <div class="mb-6">
-        <label class="block font-semibold">Vazifa nomi:</label>
-        <input type="text" class="w-full p-2 border rounded mt-1" placeholder="Masalan, Matematika 5-mashq">
-    </div>
-    <div class="mb-6">
-        <label class="block font-semibold">Vazifa tavsifi:</label>
-        <textarea class="w-full p-2 border rounded mt-1" rows="3" placeholder="Vazifa tavsifini kiriting..."></textarea>
-    </div>
-    <div class="mb-6">
-        <label class="block font-semibold">Muddati:</label>
-        <input type="date" class="w-full p-2 border rounded mt-1">
-    </div>
-    <button class="bg-blue-500 text-white px-4 py-2 rounded">Vazifani joylash</button>
+<body class="p-6 max-w-4xl mx-auto">
+<h1 class="text-2xl font-bold mb-4">O‘quvchilar Ro‘yxati</h1>
+<input
+        type="text"
+        placeholder="Qidirish..."
+        class="mb-4 w-full p-2 border border-gray-300 rounded-md"
+        onkeyup="searchStudents()"
+        id="searchBox"
+/>
+<div class="bg-white shadow-md rounded-lg overflow-hidden">
+    <table class="w-full border-collapse" id="studentsTable">
+        <thead class="bg-gray-200">
+        <tr>
+            <th class="p-3 text-left">ID</th>
+            <th class="p-3 text-left">Ism</th>
+            <th class="p-3 text-left">Email</th>
+            <th class="p-3 text-left">Telefon</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="border-b hover:bg-gray-100">
+            <td class="p-3">1</td>
+            <td class="p-3">Ali Hasanov</td>
+            <td class="p-3">ali@example.com</td>
+            <td class="p-3">+998901234567</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-100">
+            <td class="p-3">2</td>
+            <td class="p-3">Zarina Karimova</td>
+            <td class="p-3">zarina@example.com</td>
+            <td class="p-3">+998931112233</td>
+        </tr>
+        <tr class="border-b hover:bg-gray-100">
+            <td class="p-3">3</td>
+            <td class="p-3">Javohir Rahimov</td>
+            <td class="p-3">javohir@example.com</td>
+            <td class="p-3">+998977776655</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-
-<!-- O'quvchi vazifa yuklaydi -->
-<div class="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg mt-8">
-    <h2 class="text-2xl font-bold mb-4">📂 Vazifani Yuklash</h2>
-    <div class="mb-6">
-        <label class="block font-semibold">Fayl yuklash (PDF, DOCX, JPG):</label>
-        <input type="file" class="w-full p-2 border rounded mt-1">
-    </div>
-    <div class="mb-6">
-        <label class="block font-semibold">Izoh qoldirish:</label>
-        <textarea class="w-full p-2 border rounded mt-1" rows="3" placeholder="Izoh yozing..."></textarea>
-    </div>
-    <button class="bg-green-500 text-white px-4 py-2 rounded">Yuborish</button>
-</div>
+<script>
+    function searchStudents() {
+        let input = document.getElementById("searchBox").value.toLowerCase();
+        let rows = document.querySelectorAll("#studentsTable tbody tr");
+        rows.forEach(row => {
+            let name = row.cells[1].textContent.toLowerCase();
+            row.style.display = name.includes(input) ? "" : "none";
+        });
+    }
+</script>
 </body>
 </html>
