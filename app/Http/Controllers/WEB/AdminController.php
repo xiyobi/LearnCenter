@@ -4,26 +4,40 @@ namespace App\Http\Controllers\WEB;
 
 
 use App\Models\Admin;
+use App\Http\Middleware\RoleMiddleware;
+
+
+
 
 
 class AdminController
 {
-    public function addStudent():void
+    public function __construct()
     {
-        view('admin/dashboard/add_student');
+        RoleMiddleware::check('admin');
+    }
+
+
+    public function courses():void
+    {
+        view('admin/dashboard/courses');
     }
     public function students():void
     {
         view('admin/dashboard/students');
     }
-    public function teachers():void
+    public function settings():void
     {
-        view('admin/dashboard/teachers');
+        view('admin/dashboard/settings');
     }
     public function videos():void
     {
         view('admin/dashboard/videos');
     }
+     public function logout():void
+        {
+            view('admin/dashboard/logout');
+        }
 
 
 }
