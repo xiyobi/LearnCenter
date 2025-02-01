@@ -1,153 +1,192 @@
 <?php require '../resources/views/admin-components/header.php'; ?>
-<script src=" /js/dashboard/getUserInfo.js"></script>
+<script src="/js/dashboard/getUserInfo.js"></script>
 
-
-<div class="bg-gray-100">
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Darslar</title>
+</head>
+<body class="bg-gray-100">
 <div class="flex min-h-screen">
     <!-- Sidebar -->
     <?php include '../resources/views/admin-components/sidebar.php'; ?>
 
-    <!-- Main Content -->
-    <div class="flex-1">
-        <!-- Top Navigation -->
-        <header class="bg-white shadow-sm">
-            <div class="h-16 flex items-center justify-between px-4">
-                <button class="md:hidden text-gray-600" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-                <div class="flex items-center space-x-4">
+    <!-- Main Content - Fixed typo in div -->
+    <div class="ml-64 flex-1 p-8">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-bold">Video Darslar</h1>
+            <button
+                    class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center"
+                    onclick="openAddVideoModal()"
+            >
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Yangi Video Qo'shish
+            </button>
+        </div>
 
-                    <div class="flex items-center space-x-2">
-                        <img src="https://images.newscientist.com/wp-content/uploads/2024/05/07141222/SEI_203029555.jpg" alt="Profile" class="w-10 h-10 rounded-full">
-                        <span class="text-gray-700 font-medium" id="username"></span>
-                    </div>
+        <!-- Search and Filter -->
+        <div class="bg-white p-4 rounded-lg shadow mb-6">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="flex-1">
+                    <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Videoni qidirish..."
+                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
                 </div>
+                <select
+                        id="courseFilter"
+                        class="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="">Barcha kurslar</option>
+                    <option value="php">PHP</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                </select>
             </div>
-        </header>
+        </div>
 
-        <!-- Content -->
-        <main class="p-6">
-            <div class="min-h-screen bg-gray-100">
-                <div class="container">
-                    <!-- Header -->
-                    <div class="mb-4">
-                        <h2 class="text-2xl font-bold text-gray-800">My Quizzes</h2>
-                        <p class="mt-2 text-gray-600">Fill in the details below to create a new quiz</p>
-                    </div>
+        <!-- Error Display -->
+        <div id="error" class="mb-4"></div>
 
-                    <!-- Main Form -->
-                    <form class="space-y-4" id="quizForm" onsubmit="createQuiz()">
-                        <!-- Quiz Details Section -->
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Quiz Details</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <label for="title" class="block text-sm font-medium text-gray-700">Quiz Title</label>
-                                    <input type="text" id="title" name="title" placeholder="Quiz Title" required
-                                           class="w-full px-4 py-2 border rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                </div>
-                                <div>
-                                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                                    <textarea id="description" name="description" rows="3" placeholder="Description" required
-                                              class="w-full px-4 py-2 border rounded-lg mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                                </div>
-                                <div>
-                                    <label for="timeLimit" class="block text-sm font-medium text-gray-700">Time Limit (minutes)</label>
-                                    <input type="number" id="timeLimit" name="timeLimit" placeholder="Time Limit" min="1" required
-                                           class="px-4 py-2 border rounded-lg mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Questions Section -->
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="flex justify-between items-center mb-4">
-                                <h2 class="text-xl font-semibold text-gray-800">Questions</h2>
-                                <button type="button" id="addQuestionBtn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                    Add Question
-                                </button>
-                            </div>
-
-                            <!-- Question Template -->
-                            <div id="questionsContainer" class="space-y-6">
-                                <div class="p-4 border border-gray-200 rounded-lg" data-question-id="1">
-                                    <div>
-                                        <h3>1</h3>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="block text-sm font-medium text-gray-700">Question Text</label>
-                                        <label>
-                                            <input name="questions[0][quiz]" type="text" required
-                                                   class="w-full px-4 py-2 border rounded-lg mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                        </label>
-                                    </div>
-
-                                    <div class="space-y-3" data-options-container>
-                                        <div class="flex justify-between">
-                                            <p class="text-sm font-medium text-gray-700">Answer Options</p>
-                                            <button type="button" class="addOptionBtn px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
-                                                Add Option
-                                            </button>
-                                        </div>
-                                        <!-- Option 1 -->
-                                        <div class="flex items-center gap-4">
-                                            <label>
-                                                <input type="radio" name="questions[0][correct]" value="0" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                                            </label>
-                                            <label>
-                                                <input type="text" name="questions[0][options][]" placeholder="Option 1" required
-                                                       class="w-full px-4 py-2 border rounded-lg block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                            </label>
-                                            <button type="button" class="removeOptionBtn px-2 py-1 text-red-600 hover:text-red-800">×</button>
-                                        </div>
-                                        <!-- Option 2 -->
-                                    </div>
-
-                                    <div class="mt-4 flex justify-end">
-                                        <button type="button" class="removeQuestionBtn text-red-600 hover:text-red-800 font-medium">
-                                            Remove Question
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="error"></div>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <div class="flex justify-end">
-                            <button type="submit"
-                                    class="px-6 py-3 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                                Create Quiz
+        <!-- Video Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="videoGrid">
+            <!-- Video Card Template -->
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="relative pb-[56.25%] bg-gray-100">
+                    <img src="/api/placeholder/400/225" alt="Video thumbnail" class="absolute h-full w-full object-cover">
+                    <span class="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">15:30</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold mb-2">PHP asoslari: Kirish</h3>
+                    <div class="text-sm text-gray-500 mb-2">234 ko'rilgan • 2 kun oldin</div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-blue-600">PHP kursi</span>
+                        <div class="flex space-x-2">
+                            <button
+                                    class="p-2 hover:bg-gray-100 rounded-full"
+                                    aria-label="Tahrirlash"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg>
+                            </button>
+                            <button
+                                    class="p-2 hover:bg-gray-100 rounded-full text-red-500"
+                                    aria-label="O'chirish"
+                            >
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                </svg>
                             </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </main>
+        </div>
+
+        <!-- Pagination -->
+        <div class="mt-8 flex justify-center">
+            <nav class="flex flex-wrap gap-2">
+                <a href="#" class="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">Oldingi</a>
+                <a href="#" class="px-3 py-2 rounded-lg bg-blue-600 text-white">1</a>
+                <a href="#" class="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">2</a>
+                <a href="#" class="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">3</a>
+                <a href="#" class="px-3 py-2 rounded-lg bg-gray-200 text-gray-700 hover:bg-gray-300">Keyingi</a>
+            </nav>
+        </div>
     </div>
 </div>
-</div>
-<script>
-    async function createQuiz() {
-        event.preventDefault();
-        let form = document.getElementById("quizForm"),
-            formData = new FormData(form);
-        const { default: apiFetch } = await import('/js/utils/allFetch.js');
-        await apiFetch('/quizzes', {
-            method: "Post", body: formData
-        }).then(data =>{
-            console.log(data);
-        })
-            .catch((error)=>{
-                console.error(error.data.errors);
-                document.getElementById('error').innerHTML = "";
-                Object.keys(error.data.errors).forEach(err => {
-                    document.getElementById('error').innerHTML += `
-                <p class="text-red-500 mt-1">${error.data.errors[err]}</p>`;
 
-                })
-            });
+<script type="module">
+    import { default as apiFetch } from '/js/utils/allFetch.js';
+
+    // Initialize search and filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const courseFilter = document.getElementById('courseFilter');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+        }
+        if (courseFilter) {
+            courseFilter.addEventListener('change', handleFilter);
+        }
+    });
+
+    // Debounce function for search
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
     }
 
+    // Handle search
+    async function handleSearch(event) {
+        try {
+            const searchTerm = event.target.value;
+            // Implement search logic here
+        } catch (error) {
+            handleError(error);
+        }
+    }
+
+    // Handle filter
+    async function handleFilter(event) {
+        try {
+            const filterValue = event.target.value;
+            // Implement filter logic here
+        } catch (error) {
+            handleError(error);
+        }
+    }
+
+    // Create quiz function
+    window.createQuiz = async function(event) {
+        event.preventDefault();
+        const form = document.getElementById("quizForm");
+        if (!form) return;
+
+        try {
+            const formData = new FormData(form);
+            const response = await apiFetch('/quizzes', {
+                method: "POST",
+                body: formData
+            });
+            console.log(response);
+            // Handle successful response
+        } catch (error) {
+            handleError(error);
+        }
+    };
+
+    // Error handling
+    function handleError(error) {
+        const errorDiv = document.getElementById('error');
+        if (!errorDiv) return;
+
+        errorDiv.innerHTML = '';
+        if (error.data?.errors) {
+            Object.values(error.data.errors).forEach(errorMessage => {
+                errorDiv.innerHTML += `<p class="text-red-500 mt-1">${errorMessage}</p>`;
+            });
+        } else {
+            errorDiv.innerHTML = `<p class="text-red-500 mt-1">Xatolik yuz berdi. Qaytadan urinib ko'ring.</p>`;
+        }
+    }
 </script>
+</body>
 <?php require '../resources/views/admin-components/footer.php'; ?>
+</html>

@@ -12,7 +12,12 @@
 <script>
     let sideBarItem = [
         {
-            'name': 'StudentS',
+            'name': 'Courses',
+            'uri': '/admin/dashboard/courses',
+            'icon': 'fas fa-book mr-2'
+        },
+        {
+            'name': 'Students',
             'uri': '/admin/dashboard/students',
             'icon': 'fas fa-users mr-2'
         },
@@ -22,16 +27,16 @@
             'icon': 'fas fa-video mr-2'
         },
         {
-            'name': 'Teachers',
-            'uri': '/admin/dashboard/teachers',
-            'icon': 'fas fa-user mr-2'
+            'name': 'Settings',
+            'uri': '/admin/dashboard/settings',
+            'icon': 'fas fa-cog mr-2'
 
         },
         {
-            'name': 'Student Add',
-            'uri': '/admin/dashboard/add_student',
-            'icon': 'fas fa-plus mr-2'
-        },
+            'name': 'Log out',
+            'uri': '/admin/dashboard/logout',
+            'icon': 'fas fa-sign-out-alt mr-2'
+        }
 
 
     ];

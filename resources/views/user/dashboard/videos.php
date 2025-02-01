@@ -6,127 +6,116 @@
 <div class="flex min-h-screen">
     <!-- Sidebar -->
     <?php include '../resources/views/components/sidebar.php'; ?>
-
-    <!-- Main Content -->
-    <div class="flex-1">
-        <!-- Top Navigation -->
-        <header class="bg-white shadow-sm">
-            <div class="h-16 flex items-center justify-between px-4">
-                <button class="md:hidden text-gray-600" onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-                <div class="flex items-center space-x-4">
-
-                    <div class="flex items-center space-x-2">
-                        <img src="https://images.newscientist.com/wp-content/uploads/2024/05/07141222/SEI_203029555.jpg" alt="Profile" class="w-10 h-10 rounded-full">
-                        <span class="text-gray-700 font-medium" id="username"></span>
+        <!-- Content -->
+        <div class="ml-64 flex-1">
+            <!-- Top Navigation -->
+            <div class="bg-white h-16 flex items-center justify-between px-6 shadow">
+                <h1 class="text-xl font-bold">Video Darslar</h1>
+                <div class="flex items-center">
+                    <div class="relative mr-4">
+                        <input type="text" placeholder="Qidirish..." class="pl-10 pr-4 py-2 border rounded-lg">
+                        <svg class="w-5 h-5 text-gray-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex items-center">
+                        <span id="username" class="ml-2">Foydalanuvchi</span>
                     </div>
                 </div>
             </div>
-        </header>
 
-        <!-- Content -->
-        <main class="p-6">
-            <div class="min-h-screen bg-gray-100">
-                <div class="container">
-                    <!-- Header -->
-                    <div class="mb-4">
-                        <h2 class="text-2xl font-bold text-gray-800">My Quizzes</h2>
-                        <p class="mt-2 text-gray-600">Fill in the details below to create a new quiz</p>
+            <!-- Video Content -->
+            <div class="p-6">
+                <!-- Course Progress -->
+                <div class="bg-white rounded-lg shadow mb-6 p-6">
+                    <h2 class="text-lg font-bold mb-4">Kurs jarayoni</h2>
+                    <div class="w-full bg-gray-200 rounded-full h-4">
+                        <div class="bg-blue-600 h-4 rounded-full" style="width: 65%"></div>
                     </div>
+                    <div class="flex justify-between mt-2 text-sm text-gray-600">
+                        <span>Ko'rilgan: 13 ta video</span>
+                        <span>Umumiy: 20 ta video</span>
+                    </div>
+                </div>
 
-                    <!-- Main Form -->
-                    <form class="space-y-4" id="quizForm" onsubmit="createQuiz()">
-                        <!-- Quiz Details Section -->
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Quiz Details</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <label for="title" class="block text-sm font-medium text-gray-700">Quiz Title</label>
-                                    <input type="text" id="title" name="title" placeholder="Quiz Title" required
-                                           class="w-full px-4 py-2 border rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                </div>
-                                <div>
-                                    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                                    <textarea id="description" name="description" rows="3" placeholder="Description" required
-                                              class="w-full px-4 py-2 border rounded-lg mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                                </div>
-                                <div>
-                                    <label for="timeLimit" class="block text-sm font-medium text-gray-700">Time Limit (minutes)</label>
-                                    <input type="number" id="timeLimit" name="timeLimit" placeholder="Time Limit" min="1" required
-                                           class="px-4 py-2 border rounded-lg mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                </div>
-                            </div>
+                <!-- Video Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Video Card 1 -->
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x225" alt="Video thumbnail" class="w-full">
+                            <span class="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">15:30</span>
                         </div>
-
-                        <!-- Questions Section -->
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="flex justify-between items-center mb-4">
-                                <h2 class="text-xl font-semibold text-gray-800">Questions</h2>
-                                <button type="button" id="addQuestionBtn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                                    Add Question
+                        <div class="p-4">
+                            <h3 class="font-bold mb-2">1-dars: PHP asoslari</h3>
+                            <p class="text-gray-600 text-sm mb-4">PHP dasturlash tiliga kirish va o'rnatish</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-green-600 text-sm">Ko'rilgan ✓</span>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    Davom etish
                                 </button>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Question Template -->
-                            <div id="questionsContainer" class="space-y-6">
-                                <div class="p-4 border border-gray-200 rounded-lg" data-question-id="1">
-                                    <div>
-                                        <h3>1</h3>
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="block text-sm font-medium text-gray-700">Question Text</label>
-                                        <label>
-                                            <input name="questions[0][quiz]" type="text" required
-                                                   class="w-full px-4 py-2 border rounded-lg mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                        </label>
-                                    </div>
-
-                                    <div class="space-y-3" data-options-container>
-                                        <div class="flex justify-between">
-                                            <p class="text-sm font-medium text-gray-700">Answer Options</p>
-                                            <button type="button" class="addOptionBtn px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded hover:bg-gray-200">
-                                                Add Option
-                                            </button>
-                                        </div>
-                                        <!-- Option 1 -->
-                                        <div class="flex items-center gap-4">
-                                            <label>
-                                                <input type="radio" name="questions[0][correct]" value="0" class="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                                            </label>
-                                            <label>
-                                                <input type="text" name="questions[0][options][]" placeholder="Option 1" required
-                                                       class="w-full px-4 py-2 border rounded-lg block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                            </label>
-                                            <button type="button" class="removeOptionBtn px-2 py-1 text-red-600 hover:text-red-800">×</button>
-                                        </div>
-                                        <!-- Option 2 -->
-                                    </div>
-
-                                    <div class="mt-4 flex justify-end">
-                                        <button type="button" class="removeQuestionBtn text-red-600 hover:text-red-800 font-medium">
-                                            Remove Question
-                                        </button>
-                                    </div>
-                                </div>
+                    <!-- Video Card 2 -->
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x225" alt="Video thumbnail" class="w-full">
+                            <span class="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">20:45</span>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold mb-2">2-dars: O'zgaruvchilar</h3>
+                            <p class="text-gray-600 text-sm mb-4">PHP da o'zgaruvchilar bilan ishlash</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-yellow-600 text-sm">Davom etmoqda...</span>
+                                <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                                    Davom etish
+                                </button>
                             </div>
-                            <div id="error"></div>
                         </div>
+                    </div>
 
-                        <!-- Submit Button -->
-                        <div class="flex justify-end">
-                            <button type="submit"
-                                    class="px-6 py-3 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                                Create Quiz
-                            </button>
+                    <!-- Video Card 3 -->
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="relative">
+                            <img src="https://via.placeholder.com/400x225" alt="Video thumbnail" class="w-full">
+                            <span class="absolute bottom-2 right-2 bg-black bg-opacity-75 text-white px-2 py-1 rounded text-sm">18:15</span>
                         </div>
-                    </form>
+                        <div class="p-4">
+                            <h3 class="font-bold mb-2">3-dars: Massivlar</h3>
+                            <p class="text-gray-600 text-sm mb-4">PHP da massivlar bilan ishlash</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-600 text-sm">Boshlangan emas</span>
+                                <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">
+                                    Boshlash
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="flex justify-center mt-8">
+                    <nav class="flex items-center space-x-2">
+                        <button class="px-3 py-2 rounded hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                        <button class="px-3 py-2 bg-blue-600 text-white rounded">1</button>
+                        <button class="px-3 py-2 hover:bg-gray-100 rounded">2</button>
+                        <button class="px-3 py-2 hover:bg-gray-100 rounded">3</button>
+                        <button class="px-3 py-2 rounded hover:bg-gray-100">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </nav>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
-</div>
-</div>
 <script>
     async function createQuiz() {
         event.preventDefault();

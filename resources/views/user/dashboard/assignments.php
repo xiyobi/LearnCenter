@@ -32,21 +32,21 @@
                         <span class="text-sm text-gray-600">Due: Jan 31, 2025</span>
                         <span class="text-green-600 font-medium">Completed</span>
                         <a href="#" class="text-blue-500 font-medium">Download</a>
-                        <button class="px-3 py-1 bg-blue-500 text-white rounded">Submit</button>
+                        <a href="/user/dashboard/homework" class="px-3 py-1 bg-blue-500 text-white rounded">Submit</a>
                     </li>
                     <li class="flex justify-between items-center p-3 border rounded-lg bg-gray-50">
                         <span>Assignment 2</span>
                         <span class="text-sm text-gray-600">Due: Feb 5, 2025</span>
                         <span class="text-red-600 font-medium">Pending</span>
                         <a href="#" class="text-blue-500 font-medium">Download</a>
-                        <button class="px-3 py-1 bg-blue-500 text-white rounded">Submit</button>
+                        <a href="/user/dashboard/homework" class="px-3 py-1 bg-blue-500 text-white rounded">Submit</a>
                     </li>
                     <li class="flex justify-between items-center p-3 border rounded-lg bg-gray-50">
                         <span>Assignment 3</span>
                         <span class="text-sm text-gray-600">Due: Feb 10, 2025</span>
                         <span class="text-red-600 font-medium">Pending</span>
                         <a href="#" class="text-blue-500 font-medium">Download</a>
-                        <button class="px-3 py-1 bg-blue-500 text-white rounded">Submit</button>
+                        <a href="/user/dashboard/homework" class="px-3 py-1 bg-blue-500 text-white rounded">Submit</a>
                     </li>
                 </ul>
             </div>

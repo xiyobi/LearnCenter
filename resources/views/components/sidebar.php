@@ -13,36 +13,30 @@
     let sideBarItem = [
         {
             'name': 'My Courses',
-            'uri': '/dashboard',
+            'uri': '/user/dashboard/course',
             'icon': 'fas fa-home mr-2'
         },
         {
             'name': 'My Videos',
-            'uri': '/dashboard/videos',
+            'uri': '/user/dashboard/videos',
             'icon': 'fas fa-book mr-2'
         },
         {
             'name': 'My Teacher',
-            'uri': '/dashboard/teachers',
-            'icon': 'fas fa-plus mr-2'
-
-        },
-        {
-            'name': 'Wallet',
-            'uri': '/dashboard/wallet',
-            'icon': 'fas fa-chart-bar mr-2'
-
-        },
-        {
-            'name': 'My Purchases',
-            'uri': '/dashboard/teachers',
-            'icon': 'fas fa-plus mr-2'
+            'uri': '/user/dashboard/teachers',
+            'icon': 'fas fa-user mr-2'
 
         },
         {
             'name': 'Assignment',
-            'uri': '/dashboard/assignments',
+            'uri': '/user/dashboard/assignments',
             'icon': 'fas fa-inbox mr-2'
+
+        },
+        {
+            'name': 'log out',
+            'uri': '/user/dashboard/logout',
+            'icon': 'fas fa-sign-out mr-2'
 
         }
 

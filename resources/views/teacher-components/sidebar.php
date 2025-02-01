@@ -13,25 +13,30 @@
     let sideBarItem = [
         {
             'name': 'Groups',
-            'uri': '/admin/dashboard/groups',
+            'uri': '/teacher/dashboard/groups',
             'icon': 'fas fa-users mr-2'
         },
         {
             'name': 'Assignments',
-            'uri': '/admin/dashboard/assignments',
+            'uri': '/teacher/dashboard/assignments',
             'icon': 'fas fa-book mr-2'
         },
         {
             'name': 'Students',
-            'uri': '/admin/dashboard/students',
+            'uri': '/teacher/dashboard/students',
             'icon': 'fas fa-user mr-2'
 
         },
         {
             'name': 'Videos',
-            'uri': '/admin/dashboard/videos',
+            'uri': '/teacher/dashboard/videos',
             'icon': 'fas fa-video mr-2'
         },
+        {
+            'name': 'Log out',
+            'uri': '/teacher/dashboard/logout',
+            'icon': 'fas fa-sign-out mr-2'
+        }
 
 
     ];

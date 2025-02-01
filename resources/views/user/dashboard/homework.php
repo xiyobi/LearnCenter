@@ -10,21 +10,6 @@
 <div class="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg">
     <h2 class="text-2xl font-bold mb-4">📌 Vazifa Yuklash</h2>
 
-    <!-- O'qituvchi vazifa yuklaydi -->
-    <div class="mb-6">
-        <label class="block font-semibold">Vazifa nomi:</label>
-        <input type="text" class="w-full p-2 border rounded mt-1" placeholder="Masalan, Matematika 5-mashq">
-    </div>
-    <div class="mb-6">
-        <label class="block font-semibold">Vazifa tavsifi:</label>
-        <textarea class="w-full p-2 border rounded mt-1" rows="3" placeholder="Vazifa tavsifini kiriting..."></textarea>
-    </div>
-    <div class="mb-6">
-        <label class="block font-semibold">Muddati:</label>
-        <input type="date" class="w-full p-2 border rounded mt-1">
-    </div>
-    <button class="bg-blue-500 text-white px-4 py-2 rounded">Vazifani joylash</button>
-</div>
 
 <!-- O'quvchi vazifa yuklaydi -->
 <div class="max-w-4xl mx-auto bg-white p-6 shadow-md rounded-lg mt-8">
@@ -35,7 +20,9 @@
     </div>
     <div class="mb-6">
         <label class="block font-semibold">Izoh qoldirish:</label>
-        <textarea class="w-full p-2 border rounded mt-1" rows="3" placeholder="Izoh yozing..."></textarea>
+        <label>
+            <textarea class="w-full p-2 border rounded mt-1" rows="3" placeholder="Izoh yozing..."></textarea>
+        </label>
     </div>
     <button class="bg-green-500 text-white px-4 py-2 rounded">Yuborish</button>
 </div>
