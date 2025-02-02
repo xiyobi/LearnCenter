@@ -23,7 +23,7 @@ class  User extends DB
             );
 
         $userId = $this->conn->lastInsertId();
-        $this->createApiToken($userId);
+        $this->userCreateApiToken($userId);
         return true;
     }
     public function getUser(string $email, string $password): bool
@@ -38,7 +38,7 @@ class  User extends DB
         $user = $stmt->fetch();
         if ($user && password_verify($password, $user->password)) {
 
-            $this->createApiToken($user->id);
+            $this->userCreateApiToken($user->id);
             return true;
         }
         else
