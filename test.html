@@ -1,61 +1,47 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O‘quvchilar Ro‘yxati</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="p-6 max-w-4xl mx-auto">
-<h1 class="text-2xl font-bold mb-4">O‘quvchilar Ro‘yxati</h1>
-<input
-        type="text"
-        placeholder="Qidirish..."
-        class="mb-4 w-full p-2 border border-gray-300 rounded-md"
-        onkeyup="searchStudents()"
-        id="searchBox"
-/>
-<div class="bg-white shadow-md rounded-lg overflow-hidden">
-    <table class="w-full border-collapse" id="studentsTable">
-        <thead class="bg-gray-200">
-        <tr>
-            <th class="p-3 text-left">ID</th>
-            <th class="p-3 text-left">Ism</th>
-            <th class="p-3 text-left">Email</th>
-            <th class="p-3 text-left">Telefon</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="border-b hover:bg-gray-100">
-            <td class="p-3">1</td>
-            <td class="p-3">Ali Hasanov</td>
-            <td class="p-3">ali@example.com</td>
-            <td class="p-3">+998901234567</td>
-        </tr>
-        <tr class="border-b hover:bg-gray-100">
-            <td class="p-3">2</td>
-            <td class="p-3">Zarina Karimova</td>
-            <td class="p-3">zarina@example.com</td>
-            <td class="p-3">+998931112233</td>
-        </tr>
-        <tr class="border-b hover:bg-gray-100">
-            <td class="p-3">3</td>
-            <td class="p-3">Javohir Rahimov</td>
-            <td class="p-3">javohir@example.com</td>
-            <td class="p-3">+998977776655</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-<script>
-    function searchStudents() {
-        let input = document.getElementById("searchBox").value.toLowerCase();
-        let rows = document.querySelectorAll("#studentsTable tbody tr");
-        rows.forEach(row => {
-            let name = row.cells[1].textContent.toLowerCase();
-            row.style.display = name.includes(input) ? "" : "none";
-        });
-    }
+
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/><meta http-equiv="X-UA-Compatible" content="ie=edge"/><meta name="theme-color" content="#ffffff"/><meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><link rel="icon shortcut" href="favicon.ico?v=vMgxE2LYKv"><title>Offline Student Panel</title><link rel="stylesheet" href="https://cdn-app.sberdevices.ru/shared-static/0.0.0/styles/SBSansText.0.1.0.css"/><style>.spinner {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}</style><meta name="version" content="a739f7080e93fe6f814888ddd5061eb08112cbf27120cd51fed04fa43dd63383"><script defer="defer" src="/static/js/runtime.04878c3b200ae406b658.js"></script><script defer="defer" src="/static/js/modules/mui.2bd8691ffa1fed5e47b2.js"></script><script defer="defer" src="/static/js/modules/axios.62d2934c09d4d47915e7.js"></script><script defer="defer" src="/static/js/modules/babel.daccaddc0dd3057ccb36.js"></script><script defer="defer" src="/static/js/modules/react-transition-group.24b1ad88eb027ad03962.js"></script><script defer="defer" src="/static/js/modules/classnames.95592c918d01a92d6f01.js"></script><script defer="defer" src="/static/js/modules/popperjs.c972d82e21304a5323bc.js"></script><script defer="defer" src="/static/js/modules/crypto-js.0c49660970cd8dfe5ab6.js"></script><script defer="defer" src="/static/js/modules/mobx-react-lite.7c02c23fa4e73a4c7719.js"></script><script defer="defer" src="/static/js/modules/emotion.9fda66cc4b0ef3a3eb63.js"></script><script defer="defer" src="/static/js/modules/react-dom.929bb8505485992a016a.js"></script><script defer="defer" src="/static/js/modules/react-hook-form.db26d372dd56f600a05c.js"></script><script defer="defer" src="/static/js/modules/react-router.1b6891bfc0fe00d1930d.js"></script><script defer="defer" src="/static/js/modules/mobx.e5f01ab179b3cfc839e6.js"></script><script defer="defer" src="/static/js/modules/remix-run.bd7fc33e39190e9bd5c9.js"></script><script defer="defer" src="/static/js/main.f13d0f479806d0e34e53.js"></script><link href="/static/styles/main.2e0fb194abe4adf26af6.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"><div class="spinner"><div class="spinner__loader"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto; animation-play-state: running; animation-delay: 0s;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"><circle cx="50" cy="50" r="0" fill="none" stroke="#ba8d5b" stroke-width="2" style="animation-play-state: running; animation-delay: 0s;"><animate attributeName="r" repeatCount="indefinite" dur="1s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline" begin="0s" style="animation-play-state: running; animation-delay: 0s;"></animate><animate attributeName="opacity" repeatCount="indefinite" dur="1s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline" begin="0s" style="animation-play-state: running; animation-delay: 0s;"></animate></circle><circle cx="50" cy="50" r="0" fill="none" stroke="#0eb182" stroke-width="2" style="animation-play-state: running; animation-delay: 0s;"><animate attributeName="r" repeatCount="indefinite" dur="1s" values="0;40" keyTimes="0;1" keySplines="0 0.2 0.8 1" calcMode="spline" begin="-0.5s" style="animation-play-state: running; animation-delay: 0s;"></animate><animate attributeName="opacity" repeatCount="indefinite" dur="1s" values="1;0" keyTimes="0;1" keySplines="0.2 0 0.8 1" calcMode="spline" begin="-0.5s" style="animation-play-state: running; animation-delay: 0s;"></animate></circle></svg></div></div></div></body></html><script>
+    (function() {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    }
+                    else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        }
+                        else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
 </script>
-</body>
-</html>
